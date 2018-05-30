@@ -37,7 +37,7 @@ def segment_by_color():
 
                 hsv = cv2.cvtColor(img_crop, cv2.COLOR_BGR2HSV)
 
-                lower_red = np.array([104, 21, 219])
+                lower_red = np.array([104, 21, 114])
                 upper_red = np.array([180, 255, 255])
 
                 lower_yellow = np.array([5, 45, 209])
@@ -56,7 +56,7 @@ def segment_by_color():
                 blur = cv2.GaussianBlur(res, (15, 15), 0)
                 _, puck = cv2.threshold(blur, 70, 255, cv2.THRESH_BINARY)
 
-                if np.mean(puck) < 7:
+                if np.mean(puck) < 2:
                     print('pic',pic)
                     print(np.mean(puck))
                     cv2.imwrite('./{}/else/else_{}.jpg'.format(out_path, counter), puck)
